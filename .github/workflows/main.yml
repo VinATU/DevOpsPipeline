@@ -23,10 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Create tests directory and test.py
-      run: |
-        mkdir tests
-        echo "def test_dummy():\n    assert True" > tests/test.py
+ #   - name: Create tests directory and test.py
+ #     run: |
+ #       mkdir tests
+ #       echo "def test_dummy():\n    assert True" > tests/test.py
 
     - name: List files in tests directory
       run: |
