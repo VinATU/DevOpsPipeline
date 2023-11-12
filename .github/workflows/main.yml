@@ -51,9 +51,7 @@ jobs:
 
     - name: Deploy to Docker Hub
       run: |
-        mkdir -p $HOME/.docker
-        echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$(echo -n ${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }} | base64)\"}}}" > /github/home/docker/config.json
-        docker login --config /github/home/docker -u ${{ secrets.DOCKER_USERNAME }}  
+        docker login -u ${{ secrets.DOCKER_USERNAME }} 
         docker build -t flask-hello-app .
         docker tag flask-hello-app ${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest
