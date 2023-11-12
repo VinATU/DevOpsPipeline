@@ -48,7 +48,7 @@ jobs:
       with: 
         registry: ghcr.io
         username: VinATU
-        password: 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
+        password: ${{ secrets.GIT_TOKEN }}
 
     - name: Deploy to GitHub Container Registry
       run: |
