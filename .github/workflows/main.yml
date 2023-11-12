@@ -53,6 +53,6 @@ jobs:
       run: |
         docker build -t flask-hello-app .
         docker tag flask-hello-app "${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest" | tr '[:upper:]' '[:lower:]'
-        docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_TOKEN }}"
+        docker login -u "${{ secrets.DOCKER_USERNAME }}" 
         docker push "${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest"
   
