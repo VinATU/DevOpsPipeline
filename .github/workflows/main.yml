@@ -47,7 +47,7 @@ jobs:
       uses: docker/login-action@v2
       with: 
         registry: ghcr.io
-        username: VinATU
+        username: vinatu
         password: ${{ secrets.GIT_TOKEN }}
 
     - name: Deploy to GitHub Container Registry
