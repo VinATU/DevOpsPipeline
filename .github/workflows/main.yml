@@ -23,11 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
- #   - name: Create tests directory and test.py
- #     run: |
- #       mkdir tests
- #       echo "def test_dummy():\n    assert True" > tests/test.py
-
     - name: List files in tests directory
       run: |
         ls -R tests
@@ -35,7 +30,6 @@ jobs:
     - name: Run tests
       run: |
         python -m unittest discover -p '*_test.py' tests
-
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,15 +43,14 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Login to docker
+    - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
       with: 
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_TOKEN }}
+        registry: ghcr.io
+        username: VinATU
+        password: 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
 
-    - name: Deploy to Docker Hub
+    - name: Deploy to GitHub Container Registry
       run: |
-        docker build -t flask-hello-app .
-        docker tag flask-hello-app "${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest" | tr '[:upper:]' '[:lower:]'
-        docker push "${{ secrets.DOCKER_USERNAME }}/flask-hello-app:latest"
-  
+        docker build -t ghcr.io/VinATU/flask-hello-app:latest .
+        docker push ghcr.io/VinATU/flask-hello-app:latest
