@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello, l00179000 this is my DevOps Project app!' 
+    return 'Hello, my student number is l00179000 this is my DevOps Project app!' 
 
 @app.route('/hello', methods=['GET', 'POST'])
 def hello():
